@@ -228,10 +228,11 @@ class Knoeppkes():
     # init ros node
     rospy.init_node('cob_knoeppkes')
     rospy.Subscriber("/emergency_stop_state", EmergencyStopState, self.emcb)
+    title = rospy.get_param('~title', 'cob command gui')
 
     self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
     self.window.connect("delete_event", self.delete_event)
-    self.window.set_title("cob command gui")
+    self.window.set_title(title)
     self.window.set_size_request(1000, 500)
     vbox = gtk.VBox(False, 1)
     self.hbox = gtk.HBox(True, 10)
